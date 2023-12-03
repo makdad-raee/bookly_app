@@ -3,7 +3,6 @@ import 'package:bookly_app/Features/splash/presentation/views/widgets/sliding_te
 import 'package:bookly_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
