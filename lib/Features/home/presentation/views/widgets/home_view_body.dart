@@ -19,6 +19,43 @@ class HomeViewBody extends StatelessWidget {
           FeaturesBooksListView(),
            SizedBox(height: 48,),
           Text('Best Seller',style:Styles.textStyle18),
+          BestSelleListViewItem(),
+        ],
+      ),
+    );
+  }
+}
+class BestSelleListViewItem extends StatelessWidget {
+  const BestSelleListViewItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  SizedBox(
+      height: 105,
+      child: Row(
+        children: [
+          AspectRatio(
+        aspectRatio: 70 / 105,
+        child: Container(
+          width: 150,
+          decoration:  BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            image:const DecorationImage(
+              image: AssetImage(
+                kTestImage,
+              ),
+              fit: BoxFit.fill,
+            ),
+          ),
+          
+        ),
+      ),
+          Column(
+            children: [
+    
+            ],
+          )
         ],
       ),
     );
