@@ -20,6 +20,7 @@ class FeaturedListViewItem extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
+        
       ),
     );
   }
