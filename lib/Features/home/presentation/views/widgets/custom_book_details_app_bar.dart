@@ -9,6 +9,7 @@ class CustomAppbarBookDetails extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(onPressed:  () {
+          print(MediaQuery.of(context).size.width);
           
         }, icon:const Icon(Icons.close),),
         IconButton(onPressed: () {
