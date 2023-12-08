@@ -6,7 +6,9 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.backgroundColor,
     required this.textColor,
-     this.borderRadius, required this.text, this.fontSize,
+    this.borderRadius,
+    required this.text,
+    this.fontSize,
   });
   final Color backgroundColor;
   final Color textColor;
@@ -22,12 +24,14 @@ class CustomButton extends StatelessWidget {
         style: TextButton.styleFrom(
             backgroundColor: backgroundColor,
             shape: RoundedRectangleBorder(
-                borderRadius:borderRadius?? BorderRadius.circular(16))),
+                borderRadius: borderRadius ?? BorderRadius.circular(16))),
         onPressed: () {},
         child: Text(
           text,
-          style: Styles.textStyle16
-              .copyWith(color: textColor, fontWeight: FontWeight.bold,fontSize:fontSize ),
+          style: Styles.textStyle16.copyWith(
+              color: textColor,
+              fontWeight: FontWeight.bold,
+              fontSize: fontSize),
         ),
       ),
     );

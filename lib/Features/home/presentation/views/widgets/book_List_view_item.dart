@@ -53,11 +53,12 @@ class BookListViewItem extends StatelessWidget {
                   const SizedBox(
                     height: 3,
                   ),
-                   Text(
+                  Text(
                     'Rudyard Kipling',
-                    style: Styles.textStyle14.copyWith(color:const Color(0xff707070)),
+                    style: Styles.textStyle14
+                        .copyWith(color: const Color(0xff707070)),
                   ),
-                   const SizedBox(
+                  const SizedBox(
                     height: 3,
                   ),
                   Row(
