@@ -17,10 +17,12 @@ class FeaturesBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.25,
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                child: CustomBookImage(),
+              itemBuilder: (context, index) =>  Padding(
+                padding:const EdgeInsets.symmetric(horizontal: 8),
+                child: CustomBookImage(imageUrl: state.books[index].volumeInfo.imageLinks.thumbnail,),
               ),
             ),
           );
