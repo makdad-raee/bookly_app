@@ -7,7 +7,9 @@ abstract class NewsBooksStata extends Equatable{
   
   List<Object?> get props => [];
 }
-class NewsBooksInitialStata extends NewsBooksStata{}
+class NewsBooksInitialStata extends NewsBooksStata{
+  
+}
 
 class NewsBooksLoadingStata extends NewsBooksStata{}
 

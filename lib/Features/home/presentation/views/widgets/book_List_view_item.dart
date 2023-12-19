@@ -1,4 +1,6 @@
+import 'package:bookly_app/Features/home/data/models/books_model/books_model.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/book_rating.dart';
+import 'package:bookly_app/Features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/styles.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
@@ -6,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
+  const BookListViewItem({super.key, required this.booksModel});
+  final BooksModel booksModel;
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +21,8 @@ class BookListViewItem extends StatelessWidget {
         height: 105,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 70 / 105,
-              child: Container(
-                width: 150,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  image: const DecorationImage(
-                    image: AssetImage(
-                      kTestImage,
-                    ),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
+            CustomBookImage(
+                imageUrl: booksModel.volumeInfo.imageLinks.thumbnail),
             const SizedBox(
               width: 30,
             ),
@@ -43,8 +32,8 @@ class BookListViewItem extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
-                    child: const Text(
-                      'Harry Potter and the Goblet of Fire',
+                    child: Text(
+                      booksModel.volumeInfo.title!,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style: Styles.textStyle20,
@@ -54,7 +43,7 @@ class BookListViewItem extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    'Rudyard Kipling',
+                    booksModel.volumeInfo.authors![0],
                     style: Styles.textStyle14
                         .copyWith(color: const Color(0xff707070)),
                   ),
@@ -64,14 +53,17 @@ class BookListViewItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '19.99 €',
+                        'Free',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Montserrat-Bold',
                         ),
                       ),
                       const Spacer(),
-                      const BookRating()
+                      BookRating(
+                        rating: booksModel.volumeInfo.maturityRating??"0",
+                        count: booksModel.volumeInfo.pageCount??0,
+                      )
                     ],
                   )
                 ],

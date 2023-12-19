@@ -11,6 +11,7 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl({required this.apiService});
   @override
   Future<Either<Failure, List<BooksModel>>> fetchNewsBooks() async {
+    
     try {
   var data = await apiService.get(
       endPoint:
