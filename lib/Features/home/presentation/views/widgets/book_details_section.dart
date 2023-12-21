@@ -1,3 +1,4 @@
+import 'package:bookly_app/Features/home/data/models/books_model/books_model.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/book_action.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/custom_book_image.dart';
@@ -5,7 +6,9 @@ import 'package:bookly_app/core/styles.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
+  const BookDetailsSection({super.key, required this.booksModel});
+  final BooksModel booksModel;
+
 
   @override
   Widget build(BuildContext context) {
@@ -14,20 +17,21 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.2),
-          child: const CustomBookImage(imageUrl: 'https://unsplash.com/photos/open-book-on-top-of-several-stacked-books-9DaOYUYnOls'),
+          child:  CustomBookImage(imageUrl: booksModel.volumeInfo.imageLinks?.thumbnail??''),
         ),
         const SizedBox(
           height: 45,
         ),
-        const Text(
-          'The Jungle Book',
+         Text(
+           booksModel.volumeInfo.title!,
+           textAlign: TextAlign.center,
           style: Styles.textStyle30,
         ),
         const SizedBox(
           height: 5,
         ),
         Text(
-          'Rudyard Kipling',
+          booksModel.volumeInfo.authors![0],
           style: Styles.textStyle18.copyWith(
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.w500,
@@ -37,13 +41,13 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 14,
         ),
-        const BookRating(count: 5,rating: '',
+         BookRating(count: booksModel.volumeInfo.pageCount?? 0,rating: booksModel.volumeInfo.maturityRating??'',
           mainAxisAlignment: MainAxisAlignment.center,
         ),
         const SizedBox(
           height: 37,
         ),
-        const BooksAction(),
+         BooksAction(booksModel: booksModel),
       ],
     );
   }
