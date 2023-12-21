@@ -9,13 +9,12 @@ class BooksAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding:const EdgeInsets.symmetric(horizontal: 8),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         children: [
-        const  Expanded(
+          const Expanded(
               child: CustomButton(
-              
             text: '19.99€',
             backgroundColor: Colors.white,
             textColor: Colors.black,
@@ -24,17 +23,16 @@ class BooksAction extends StatelessWidget {
               topLeft: Radius.circular(18),
             ),
           )),
-           Expanded(
+          Expanded(
               child: CustomButton(
-                  onPressed: ()async {
-                
-                   lanchCustomUrl(context, booksModel.volumeInfo.previewLink!);
-                },
+            onPressed: () async {
+              lanchCustomUrl(context, booksModel.volumeInfo.previewLink!);
+            },
             text: getText(booksModel),
             fontSize: 16,
-            backgroundColor:const Color(0xffEF8262),
+            backgroundColor: const Color(0xffEF8262),
             textColor: Colors.white,
-            borderRadius:const BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               bottomRight: Radius.circular(18),
               topRight: Radius.circular(18),
             ),
@@ -43,11 +41,11 @@ class BooksAction extends StatelessWidget {
       ),
     );
   }
-  
+
   String getText(BooksModel booksModel) {
-    if(booksModel.volumeInfo.previewLink==null){
+    if (booksModel.volumeInfo.previewLink == null) {
       return 'Not Avaliable';
-    }else {
+    } else {
       return 'Preview';
     }
   }

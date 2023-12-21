@@ -19,7 +19,7 @@ class ServerFailure extends Failure {
        return ServerFailure(errorMessage: 'Receive timeout with Apiserver');
 
       case DioExceptionType.badCertificate:
-      return ServerFailure(errorMessage: 'badCertificate !!!! with Apiserver');
+      return ServerFailure(errorMessage: 'bad Certificate !!!! with Apiserver');
       case DioExceptionType.badResponse:
       return ServerFailure.fromDioResponce(dioException.response!.statusCode!, dioException.response!.data);
       case DioExceptionType.cancel:
